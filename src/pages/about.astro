@@ -1,26 +1,56 @@
 ---
 // Astro frontmatter (for imports and data)
+import Navigation from "../components/Navigation.astro";
+import "../styles/global.css";
+const pageTitle = "About Me";
+const identity={
+    name: "Fachri",
+    country: "Bangladesh",
+    occupation: "Astro Learner",
+    hobbies: ["Reading", "Coding", "Traveling"],
+    skills: ["HTML", "CSS", "JavaScript", "Astro"],
+    bio: "I am a web developer learning Astro to build modern websites."
+}
+const happy= false;
+const finished = true;
+const goal=3;
+const skillColor="red";
+const fontWeight="bold";
+const textCase="uppercase";
 ---
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>About Page</title>
+        <title>{pageTitle}</title>
+        <style define:vars={{skillColor,fontWeight,textCase}}>
+            h1{
+                color: purple;
+                font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+
+        </style>
     </head>
     <body>
         <body>
-            <a href="/">Home</a>
-            <a href="/about/">About</a>
-            <a href="/blog/">Blog</a>
+            <Navigation/>
 
-
-            <h1>My Astro Site</h1>
-            <h1>About Me</h1>
-            <h2>... and my new Astro site!</h2>
-
-            <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
-
-            <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+            <h1>Few facts about me</h1>
+            <h1>{pageTitle}</h1>
+            {happy ? <p>I am happy for learning Astro </p> : <p>I am not happy</p>}
+            {finished && <p>I have finished learning Astro</p>} 
+            {goal>=3 ? <p>I reached my goal</p> : <p>I could not touch my goal</p> }
+            <p>My Skill are:</p>
+            <ul>
+                {identity.skills.map((skill) => (
+                    <li class="skill">{skill}</li>
+                ))}
+            </ul>
         </body>
     </body>
 </html>
