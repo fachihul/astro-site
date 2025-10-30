@@ -1,60 +1,11 @@
 ---
 // Astro frontmatter (for imports and data)
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "About Me";
-const identity={
-    name: "Fachri",
-    country: "Bangladesh",
-    occupation: "Astro Learner",
-    hobbies: ["Reading", "Coding", "Traveling"],
-    skills: ["HTML", "CSS", "JavaScript", "Astro"],
-    bio: "I am a web developer learning Astro to build modern websites."
-}
-const happy= false;
-const finished = true;
-const goal=3;
-const skillColor="red";
-const fontWeight="bold";
-const textCase="uppercase";
 ---
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{pageTitle}</title>
-        <style define:vars={{skillColor,fontWeight,textCase}}>
-            h1{
-                color: purple;
-                font-size: 4rem;
-            }
-            .skill {
-                color: var(--skillColor);
-                font-weight: var(--fontWeight);
-                text-transform: var(--textCase);
-            }
 
-        </style>
-    </head>
-    <body>
-        
-            <Header/>
-
-            <h1>Few facts about me</h1>
-            <h1>{pageTitle}</h1>
-            {happy ? <p>I am happy for learning Astro </p> : <p>I am not happy</p>}
-            {finished && <p>I have finished learning Astro</p>} 
-            {goal>=3 ? <p>I reached my goal</p> : <p>I could not touch my goal</p> }
-            <p>My Skill are:</p>
-            <ul>
-                {identity.skills.map((skill) => (
-                    <li class="skill">{skill}</li>
-                ))}
-            </ul>
-            <Footer/>
-            <script>
-                import "../scripts/menu.js";
-            </script>
-    </body>
-</html>
+    
+<BaseLayout pageTitle={pageTitle}>
+  <h2>About Me</h2>
+  <p>Hello! I'm an Astro enthusiast passionate about building fast and modern websites.</p>
+</BaseLayout>
